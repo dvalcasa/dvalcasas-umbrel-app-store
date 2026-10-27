@@ -1,23 +1,19 @@
 manifestVersion: 1
 id: dvalcasa-gluetun
 name: Gluetun
-tagline: Replace this tagline with your app's tagline
+tagline: VPN sidecar / proxy HTTP
 icon: https://svgur.com/i/mvA.svg
 category: networking
 version: "1.0.0"
-port: 8094
+port: 8888
 description: >-
-  Add your app's description here.
-
-
-  You can also add newlines!
-
+  Proxy HTTP à travers Gluetun.
 developer: passteque
-website: https://umbrel.com
+website: https://github.com/qdm12/gluetun
 submitter: passteque
-submission: https://github.com/dvalcasa/gluetun/pull
-repo: https://github.com/getumbrel/dvalcasa/gluetun
-support: https://github.com/getumbrel/dvalcasa/gluetun/issues
+submission: https://github.com/qdm12/gluetun/pull
+repo: https://github.com/qdm12/gluetun/gluetun
+support: https://github.com/qdm12/gluetun/issues
 gallery:
   - https://i.imgur.com/yyVG0Jb.jpeg
   - https://i.imgur.com/yyVG0Jb.jpeg
