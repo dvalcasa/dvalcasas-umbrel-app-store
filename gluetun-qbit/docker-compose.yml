@@ -1,7 +1,11 @@
 services:
+  app_proxy:
+    environment:
+      APP_HOST: dvalcasa-gluetun_qbit_1
+      APP_PORT: 8084
+  
   gluetun:
     image: qmcgaw/gluetun:latest
-    container_name: gluetun
     cap_add:
       - NET_ADMIN
     devices:
@@ -24,7 +28,6 @@ services:
 
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
-    container_name: qbittorrent
     network_mode: "service:gluetun"
     depends_on:
       gluetun:
@@ -38,9 +41,4 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data/config:/config
       - ${UMBREL_ROOT}/data/storage/downloads:/downloads
-    restart: unless-stopped
-
-networks:
-  umbrel:
-    name: umbrel_main_network
-    external: true
+    restart: on-failure

@@ -1,6 +1,6 @@
 manifestVersion: 1
 id: dvalcasa-gluetun-qbit
-name: Hello World
+name: Gluetun+qBitorrent
 tagline: Replace this tagline with your app's tagline
 icon: https://svgur.com/i/mvA.svg
 category: networking
@@ -15,9 +15,9 @@ description: >-
 developer: dvalcasa
 website: https://umbrel.com
 submitter: dvalcasa
-submission: https://github.com/getumbrel/umbrel-hello-world-app
-repo: https://github.com/getumbrel/umbrel-hello-world-app
-support: https://github.com/getumbrel/umbrel-hello-world-app/issues
+submission: https://github.com/dvalcasa/gluetun-qbit/pull
+repo: https://github.com/getumbrel/dvalcasa/gluetun-qbit
+support: https://github.com/getumbrel/dvalcasa/gluetun-qbit/issues
 gallery:
   - https://i.imgur.com/yyVG0Jb.jpeg
   - https://i.imgur.com/yyVG0Jb.jpeg
