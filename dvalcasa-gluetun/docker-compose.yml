@@ -4,7 +4,7 @@ services:
   app_proxy:
     environment:
       APP_HOST: dvalcasa-gluetun_server_1
-      APP_PORT: 8888
+      APP_PORT: 8094
 
   server:
     image: qmcgaw/gluetun

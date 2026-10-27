@@ -5,7 +5,7 @@ tagline: VPN sidecar / proxy HTTP
 icon: https://svgur.com/i/mvA.svg
 category: networking
 version: "1.0.0"
-port: 8888
+port: 8094
 description: >-
   Proxy HTTP à travers Gluetun.
 developer: passteque
