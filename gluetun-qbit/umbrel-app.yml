@@ -1,20 +1,20 @@
 manifestVersion: 1
-id: sparkles-hello-world
+id: dvalcasa-gluetun-qbit
 name: Hello World
 tagline: Replace this tagline with your app's tagline
 icon: https://svgur.com/i/mvA.svg
-category: Development
+category: networking
 version: "1.0.0"
-port: 4000
+port: 8094
 description: >-
   Add your app's description here.
 
 
   You can also add newlines!
 
-developer: Umbrel
+developer: dvalcasa
 website: https://umbrel.com
-submitter: Umbrel
+submitter: dvalcasa
 submission: https://github.com/getumbrel/umbrel-hello-world-app
 repo: https://github.com/getumbrel/umbrel-hello-world-app
 support: https://github.com/getumbrel/umbrel-hello-world-app/issues
