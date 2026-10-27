@@ -3,6 +3,8 @@ services:
     environment:
       APP_HOST: dvalcasa-gluetun_qbit_1
       APP_PORT: 8084
+      PROXY_AUTH_ADD: "true"
+      PROXY_AUTH_WHITELIST: "/api/*"
   
   gluetun:
     image: qmcgaw/gluetun:latest
@@ -15,19 +17,16 @@ services:
       - VPN_TYPE=wireguard
       - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
       - SERVER_COUNTRIES=Netherlands
-      - FIREWALL_INPUT_PORTS=8080
+      - FIREWALL_INPUT_PORTS=8084
       - FIREWALL_OUTBOUND_SUBNETS=192.168.0.0/24,10.21.0.0/16
     ports:
       - 8094:8094
     volumes:
-      - ./gluetun:/gluetun
-    networks:
-      - default
-      - umbrel
-    restart: unless-stopped
+      - ${APP_DATA_DIR}/data/config:/config
+    restart: on-failure
 
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest
+    image: ghcr.io/hotio/qbittorrent:release-5.3.0@sha256:84a374fce2b6a35687b77cc2e6ffe349d12c183b96a847c6faf7287482527d26
     network_mode: "service:gluetun"
     depends_on:
       gluetun:
@@ -36,7 +35,6 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/Paris
       - WEBUI_PORT=8094
     volumes:
       - ${APP_DATA_DIR}/data/config:/config
