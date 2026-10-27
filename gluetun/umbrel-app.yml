@@ -1,6 +1,6 @@
 manifestVersion: 1
-id: dvalcasa-gluetun-qbit
-name: Gluetun+qBitorrent
+id: dvalcasa-gluetun
+name: Gluetun
 tagline: Replace this tagline with your app's tagline
 icon: https://svgur.com/i/mvA.svg
 category: networking
@@ -12,12 +12,12 @@ description: >-
 
   You can also add newlines!
 
-developer: dvalcasa
+developer: passteque
 website: https://umbrel.com
-submitter: dvalcasa
-submission: https://github.com/dvalcasa/gluetun-qbit/pull
-repo: https://github.com/getumbrel/dvalcasa/gluetun-qbit
-support: https://github.com/getumbrel/dvalcasa/gluetun-qbit/issues
+submitter: passteque
+submission: https://github.com/dvalcasa/gluetun/pull
+repo: https://github.com/getumbrel/dvalcasa/gluetun
+support: https://github.com/getumbrel/dvalcasa/gluetun/issues
 gallery:
   - https://i.imgur.com/yyVG0Jb.jpeg
   - https://i.imgur.com/yyVG0Jb.jpeg
