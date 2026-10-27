@@ -1,8 +1,8 @@
 manifestVersion: 1
 id: dvalcasa-cleanuparr
 name: Cleanuparr
-tagline: VPN sidecar / proxy HTTP
-icon: https://svgur.com/i/mvA.svg
+tagline: /kliː.nʌp.ər/ — like "cleanuper", someone who does the cleanup. Not "CleanupArr" or "CleanUpArr".
+icon: https://github.com/Cleanuparr/Cleanuparr/raw/main/Logo/256.png
 category: networking
 version: "1.0.0"
 port: 11011
