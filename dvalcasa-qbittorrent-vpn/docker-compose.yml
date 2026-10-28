@@ -27,6 +27,7 @@ services:
     environment:
       VPN_SERVICE_PROVIDER: nordvpn
       VPN_TYPE: wireguard
+      WIREGUARD_PRIVATE_KEY: ${WIREGUARD_PRIVATE_KEY}
       SERVER_COUNTRIES: Netherlands
       SERVER_CATEGORIES: P2P
       FIREWALL_INPUT_PORTS: "8094"

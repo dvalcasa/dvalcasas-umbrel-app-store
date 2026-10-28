@@ -1,0 +1,1 @@
+export WIREGUARD_PRIVATE_KEY=$(cat "/secrets/wireguard_private_key" | head -c44)
