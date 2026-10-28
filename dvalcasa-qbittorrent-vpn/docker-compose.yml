@@ -21,7 +21,6 @@ services:
     volumes:
       - ${APP_DATA_DIR}/setup/server.py:/app/server.py:ro
       - ${APP_DATA_DIR}/data/secrets:/secrets
-      - /var/run/docker.sock:/var/run/docker.sock
     restart: on-failure
 
   gluetun:
@@ -50,7 +49,7 @@ services:
 
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
-    network_mode: service:gluetun
+    network_mode: "service:gluetun"
     depends_on:
       gluetun:
         condition: service_started

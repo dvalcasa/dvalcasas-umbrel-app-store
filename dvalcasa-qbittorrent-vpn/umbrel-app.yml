@@ -4,6 +4,7 @@ category: networking
 name: qBittorrent + NordVPN
 version: "1.2.0"
 tagline: qBittorrent isolé derrière un VPN NordVPN (Gluetun)
+icon: https://github.com/dvalcasa/dvalcasas-umbrel-app-store/blob/master/dvalcasa-qbittorrent-vpn/artifacts/icon.svg
 description: >-
   qBittorrent dont tout le trafic passe par Gluetun (NordVPN, WireGuard/NordLynx).
   Si le VPN tombe, qBittorrent n'a plus d'accès réseau (kill switch).
@@ -19,9 +20,9 @@ repo: https://github.com/qdm12/gluetun
 support: https://github.com/qdm12/gluetun/discussions
 port: 8086
 gallery:
-  - 1.jpg
-  - 2.jpg
-  - 3.jpg
+  - https://github.com/dvalcasa/dvalcasas-umbrel-app-store/blob/master/dvalcasa-qbittorrent-vpn/artifacts/1.jpg
+  - https://github.com/dvalcasa/dvalcasas-umbrel-app-store/blob/master/dvalcasa-qbittorrent-vpn/artifacts/2.jpg
+  - https://github.com/dvalcasa/dvalcasas-umbrel-app-store/blob/master/dvalcasa-qbittorrent-vpn/artifacts/3.jpg
 path: ""
 defaultPassword: ""
 releaseNotes: >-
