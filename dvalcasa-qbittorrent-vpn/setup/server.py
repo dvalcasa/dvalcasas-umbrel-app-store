@@ -2,7 +2,7 @@ import base64, html, http.client, http.server, json, re, socket, urllib.parse, u
 
 KEY = "/secrets/wireguard_private_key"
 DUMMY = "A" * 43 + "="
-APP = "homelab-qbittorrent-vpn"
+APP = "dvalcasa-qbittorrent-vpn"
 CONTAINERS = [f"{APP}_gluetun_1", f"{APP}_qbittorrent_1"]
 
 
@@ -60,7 +60,7 @@ button,a.btn{{display:inline-block;background:#4687ff;color:#fff;border:0;border
 <button>Enregistrer et redémarrer</button>
 </form></div>
 <div class="card"><a class="btn" id="q" href="#">Ouvrir qBittorrent</a></div>
-<script>document.getElementById('q').href='http://'+location.hostname+':8085'</script>
+<script>document.getElementById('q').href='http://'+location.hostname+':8094'</script>
 </html>"""
 
 
