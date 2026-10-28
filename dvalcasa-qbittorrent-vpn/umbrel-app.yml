@@ -1,0 +1,30 @@
+manifestVersion: 1
+id: dvalcasa-qbittorrent-vpn
+category: networking
+name: qBittorrent + NordVPN
+version: "1.2.0"
+tagline: qBittorrent isolé derrière un VPN NordVPN (Gluetun)
+description: >-
+  qBittorrent dont tout le trafic passe par Gluetun (NordVPN, WireGuard/NordLynx).
+  Si le VPN tombe, qBittorrent n'a plus d'accès réseau (kill switch).
+  Le reste d'umbrelOS n'est pas affecté.
+
+
+  Ouvre l'app et colle ton access token NordVPN : la clé NordLynx est
+  récupérée et le VPN redémarré automatiquement.
+developer: dvalcasa
+website: https://github.com/qdm12/gluetun
+dependencies: []
+repo: https://github.com/qdm12/gluetun
+support: https://github.com/qdm12/gluetun/discussions
+port: 8086
+gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+path: ""
+defaultPassword: ""
+releaseNotes: >-
+  Page de configuration intégrée (token NordVPN -> clé WireGuard). qBittorrent est accessible sur le port 8085.
+submitter: dvalcasa
+submission: ""
