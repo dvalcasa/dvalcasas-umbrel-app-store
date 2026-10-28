@@ -18,6 +18,8 @@ services:
   setup:
     image: python:3.12-alpine
     command: python -u /app/server.py
+    ports:
+      - "8080:8080"
     volumes:
       - ${APP_DATA_DIR}/setup/server.py:/app/server.py:ro
       - ${APP_DATA_DIR}/data/secrets:/secrets
@@ -29,9 +31,6 @@ services:
       - NET_ADMIN
     devices:
       - /dev/net/tun:/dev/net/tun
-    depends_on:
-      init:
-        condition: service_completed_successfully
     ports:
       - "8085:8085"
     environment:
