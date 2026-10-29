@@ -15,7 +15,6 @@ services:
     ports:
       # Les ports des services qui utilisent gluetun sont publiés ici
       - 8094:8094   # exemple : interface web d'un client torrent
-      - 8000:8000   # API de contrôle Gluetun (optionnel)
     environment:
       - VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER}
       - VPN_TYPE=${VPN_TYPE}
@@ -32,7 +31,7 @@ services:
     network_mode: "service:gluetun"
     depends_on:
       gluetun:
-        condition: service_started
+        condition: service_healthy
     environment:
       - PUID=1000
       - PGID=1000
@@ -41,4 +40,4 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data/qbittorrent:/config
       - ${UMBREL_ROOT}/data/storage/downloads:/downloads
-    restart: unless-stopped
+    restart: on-failure
