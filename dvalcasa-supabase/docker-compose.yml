@@ -1,14 +1,4 @@
-# Usage
-#   Start:              docker compose up -d
-#   Stop:               docker compose down
-#   Dev mode:           docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml up -d
-#   Reset everything:   sh reset.sh
-#
-# Notes:
-#   - Nested variable interpolation (${A:-${B}}) requires podman-compose >= 1.6.0
-#
-
-name: supabase
+version: "3.7"
 
 services:
   app_proxy:

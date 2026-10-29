@@ -2,7 +2,7 @@ manifestVersion: 1
 id: dvalcasa-supabase
 name: Supabase
 tagline: An open source Firebase alternative
-icon: https://github.com/Cleanuparr/Cleanuparr/raw/main/Logo/256.png
+icon: https://supabase.com/brand-assets/supabase-icon-green-transparent.svg
 category: developer tools
 version: "2026.10.16"
 port: 53000
