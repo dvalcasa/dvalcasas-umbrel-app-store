@@ -2,7 +2,7 @@ manifestVersion: 1
 id: dvalcasa-qbittorrent-vpn
 category: networking
 name: qBittorrent + NordVPN
-version: "2.0.1"
+version: "2.1.0"
 tagline: qBittorrent isolé derrière un VPN NordVPN (Gluetun)
 icon: https://raw.githubusercontent.com/dvalcasa/dvalcasas-umbrel-app-store/refs/heads/master/dvalcasa-qbittorrent-vpn/artifacts/icon.svg
 description: >-
@@ -18,7 +18,7 @@ website: https://github.com/qdm12/gluetun
 dependencies: []
 repo: https://github.com/qdm12/gluetun
 support: https://github.com/qdm12/gluetun/discussions
-port: 8086
+port: 8085
 gallery:
   - https://raw.githubusercontent.com/dvalcasa/dvalcasas-umbrel-app-store/refs/heads/master/dvalcasa-qbittorrent-vpn/artifacts/1.jpg
   - https://raw.githubusercontent.com/dvalcasa/dvalcasas-umbrel-app-store/refs/heads/master/dvalcasa-qbittorrent-vpn/artifacts/2.jpg

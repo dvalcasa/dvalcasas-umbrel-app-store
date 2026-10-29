@@ -4,71 +4,47 @@ services:
   app_proxy:
     environment:
       APP_HOST: dvalcasa-qbittorrent-vpn_setup_1
-      APP_PORT: 8080
+      APP_PORT: 8085
 
-  setup:
-    image: python:3.12-alpine
-    command: python -u /app/server.py
-    volumes:
-      - ${APP_DATA_DIR}/setup/server.py:/app/server.py:ro
-      - ${APP_DATA_DIR}/data/secrets:/secrets
-      - /var/run/docker.sock:/var/run/docker.sock
-    restart: on-failure
-
+  services:
   gluetun:
     image: qmcgaw/gluetun:v3
-    # Reste en attente (sans erreur) tant qu'aucune vraie clé n'est configurée,
-    # pour que l'app s'installe et démarre ; la page de config le redémarre ensuite.
-    entrypoint:
-      - /bin/sh
-      - -c
-      - |
-        K=/run/secrets/wireguard_private_key
-        until grep -qE '^[A-Za-z0-9+/]{43}=$$' $$K 2>/dev/null && ! grep -q '^AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=$$' $$K; do
-          echo "En attente de la cle WireGuard (page de configuration de l'app)..."
-          sleep 5
-        done
-        exec /gluetun-entrypoint
+    container_name: gluetun
     cap_add:
       - NET_ADMIN
     devices:
       - /dev/net/tun:/dev/net/tun
     ports:
-      - "8085:8085"
+      # Les ports des services qui utilisent gluetun sont publiés ici
+      - 8085:8085   # exemple : interface web d'un client torrent
+      - 8000:8000   # API de contrôle Gluetun (optionnel)
     environment:
-      VPN_SERVICE_PROVIDER: nordvpn
-      VPN_TYPE: wireguard
-      SERVER_COUNTRIES: France
-      SERVER_CATEGORIES: P2P
-      FIREWALL_INPUT_PORTS: "8085"
-      FIREWALL_OUTBOUND_SUBNETS: 10.21.0.0/16
+      - VPN_SERVICE_PROVIDER=nordvpn
+      - VPN_TYPE=wireguard
+      - WIREGUARD_PRIVATE_KEY=wOEI9rqqbDwnN8/Bpp22sVz48T71vJ4fYmFWujulwUU=
+      - SERVER_COUNTRIES=Switzerland,Netherlands
+      - TZ=Europe/Paris
+      - HTTP_CONTROL_SERVER_ADDRESS=:8000
+      - FIREWALL_OUTBOUND_SUBNETS=192.168.1.0/24,10.21.0.0/16
     volumes:
       - ${APP_DATA_DIR}/data/secrets:/run/secrets:ro
       - ${APP_DATA_DIR}/data/gluetun:/gluetun
-    restart: on-failure
+    restart: unless-stopped
 
+  # Exemple de service routé via le VPN
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
-    network_mode: service:gluetun
+    container_name: qbittorrent
+    network_mode: "service:gluetun"
     depends_on:
       gluetun:
         condition: service_started
-    # N'démarre qu'une fois le tunnel VPN monté : aucune fuite hors VPN.
-    entrypoint:
-      - /bin/sh
-      - -c
-      - |
-        until ls /sys/class/net | grep -qE '^(tun0|wg0)$$'; do
-          echo "En attente du tunnel VPN..."
-          sleep 5
-        done
-        exec /init
     environment:
-      PUID: 1000
-      PGID: 1000
-      TZ: Europe/Paris
-      WEBUI_PORT: 8085
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Paris
+      - WEBUI_PORT=8085
     volumes:
       - ${APP_DATA_DIR}/data/qbittorrent:/config
       - ${UMBREL_ROOT}/data/storage/downloads:/downloads
-    restart: on-failure
+    restart: unless-stopped
