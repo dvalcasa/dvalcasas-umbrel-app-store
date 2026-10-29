@@ -4,7 +4,7 @@ services:
   app_proxy:
     environment:
       APP_HOST: dvalcasa-qbittorrent-vpn_setup_1
-      APP_PORT: 8000
+      APP_PORT: 8094
 
   services:
     gluetun:
@@ -25,10 +25,7 @@ services:
         - FIREWALL_OUTBOUND_SUBNETS=192.168.0.0/24,10.21.0.0/16
         - FIREWALL_INPUT_PORTS=8094
         - UPDATER_PERIOD=24h
-      volumes:
-        - ${APP_DATA_DIR}/data/secrets:/run/secrets:ro
-        - ${APP_DATA_DIR}/data/gluetun:/gluetun
-      restart: unless-stopped
+      restart: on-failure
 
     # Exemple de service routé via le VPN
     qbittorrent:
