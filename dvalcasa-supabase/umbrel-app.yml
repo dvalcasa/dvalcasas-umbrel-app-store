@@ -1,0 +1,25 @@
+manifestVersion: 1
+id: dvalcasa-supabase
+name: Supabase
+tagline: An open source Firebase alternative
+icon: https://github.com/Cleanuparr/Cleanuparr/raw/main/Logo/256.png
+category: developer tools
+version: "2026.10.16"
+port: 53000
+description: >-
+  Supabase is the Postgres development platform. 
+  We're building the features of Firebase using enterprise-grade open source tools.
+developer: Cleanuparr
+website: https://supabase.com
+submitter: supabase
+submission: https://github.com/supabase/supabase/pull
+repo: https://github.com/supabase/supabase
+support: https://github.com/supabase/supabase/issues
+gallery:
+  - https://user-images.githubusercontent.com/8291514/213727234-cda046d6-28c6-491a-b284-b86c5cede25d.png
+  - https://raw.githubusercontent.com/supabase/supabase/master/apps/www/public/images/github/supabase-dashboard.png
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: "umbrel"
+defaultPassword: "umbrel"
