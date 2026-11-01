@@ -13,7 +13,7 @@ services:
       - PGID=1000 #optional
       - TZ=Europe/Paris
       - SUBDOMAINS=${SUBDOMAINS:-subdomain}
-      - TOKEN=${SUBDOMAINS:-token}
+      - TOKEN=${TOKEN:-token}
       - UPDATE_IP=both
       - LOG_FILE=true
     volumes:

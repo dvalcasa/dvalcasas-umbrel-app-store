@@ -2,7 +2,7 @@ manifestVersion: 1
 id: dvalcasa-duckdns
 name: DuckDNS
 tagline: free dynamic DNS hosted
-icon: ttps://raw.githubusercontent.com/dvalcasa/dvalcasas-umbrel-app-store/refs/heads/master/dvalcasa-duckdns/assets/icon.png
+icon: https://raw.githubusercontent.com/dvalcasa/dvalcasas-umbrel-app-store/refs/heads/master/dvalcasa-duckdns/assets/icon.png
 category: networking
 version: "15.07.26"
 port: 18080
