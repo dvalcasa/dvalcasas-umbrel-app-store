@@ -1,0 +1,4 @@
+export VPN_SERVICE_PROVIDER=nordvpn
+export VPN_TYPE=wireguard
+export WIREGUARD_PRIVATE_KEY=
+export SERVER_COUNTRIES=France,Switzerland,Netherlands
