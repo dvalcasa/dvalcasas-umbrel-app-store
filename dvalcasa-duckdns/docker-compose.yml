@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: dvalcasa-duckdns_server_1
+      APP_PORT: 80
+
+  server:
+    image: lscr.io/linuxserver/duckdns:latest
+    environment:
+      - PUID=1000 #optional
+      - PGID=1000 #optional
+      - TZ=Europe/Paris
+      - SUBDOMAINS=${SUBDOMAINS:-subdomain}
+      - TOKEN=${SUBDOMAINS:-token}
+      - UPDATE_IP=both
+      - LOG_FILE=true
+    volumes:
+      - ${APP_DATA_DIR}/config:/config
+    restart: on-failure

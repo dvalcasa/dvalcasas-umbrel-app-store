@@ -1,0 +1,25 @@
+manifestVersion: 1
+id: dvalcasa-duckdns
+name: DuckDNS
+tagline: free dynamic DNS hosted
+icon: ttps://raw.githubusercontent.com/dvalcasa/dvalcasas-umbrel-app-store/refs/heads/master/dvalcasa-duckdns/assets/icon.png
+category: networking
+version: "15.07.26"
+port: 18080
+description: >-
+  Duckdns is a free service which will point a DNS (sub domains of duckdns.org) to an IP of your choice. 
+  The service is completely free, and doesn't require reactivation or forum posts to maintain its existence.
+developer: Duckdns
+website: https://www.duckdns.org
+submitter: Duckdns
+submission: https://github.com/Cleanuparr/Cleanuparr/pull
+repo: https://github.com/Cleanuparr/Cleanuparr
+support: https://github.com/Cleanuparr/Cleanuparr/issues
+gallery:
+  - https://cleanuparr.github.io/img/screenshots/dashboard.webp
+releaseNotes: >-
+  Rebase to Alpine 3.24.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
