@@ -4,7 +4,7 @@ services:
   app_proxy:
     environment:
       APP_HOST: dvalcasa-qbittorrent-vpn_gluetun_1
-      APP_PORT: 8094
+      APP_PORT: 8080
       PROXY_AUTH_ADD: "true"
       PROXY_AUTH_WHITELIST: "/api/*"
 
@@ -16,7 +16,7 @@ services:
       - /dev/net/tun:/dev/net/tun
     ports:
       # Les ports des services qui utilisent gluetun sont publiés ici
-      - 8094:8094   # exemple : interface web d'un client torrent
+      - 8080:8080   # exemple : interface web d'un client torrent
     environment:
       - VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER}
       - VPN_TYPE=${VPN_TYPE}
@@ -37,8 +37,6 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/Paris
-      - WEBUI_PORT=8094
     volumes:
       - ${APP_DATA_DIR}/data/config:/config
       - ${UMBREL_ROOT}/data/storage/downloads:/downloads
