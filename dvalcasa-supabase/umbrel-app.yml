@@ -2,7 +2,7 @@ manifestVersion: 1
 id: dvalcasa-supabase
 name: Supabase
 tagline: An open source Firebase alternative
-icon: https://supabase.com/brand-assets/supabase-icon-green-transparent.svg
+icon: https://raw.githubusercontent.com/dvalcasa/dvalcasas-umbrel-app-store/refs/heads/master/dvalcasa-supabase/assets/icon.svg
 category: developer tools
 version: "2026.10.16"
 port: 53000
@@ -16,8 +16,10 @@ submission: https://github.com/supabase/supabase/pull
 repo: https://github.com/supabase/supabase
 support: https://github.com/supabase/supabase/issues
 gallery:
-  - https://user-images.githubusercontent.com/8291514/213727234-cda046d6-28c6-491a-b284-b86c5cede25d.png
-  - https://raw.githubusercontent.com/supabase/supabase/master/apps/www/public/images/github/supabase-dashboard.png
+  - https://raw.githubusercontent.com/dvalcasa/dvalcasas-umbrel-app-store/refs/heads/master/dvalcasa-supabase/assets/1.png
+  - https://raw.githubusercontent.com/dvalcasa/dvalcasas-umbrel-app-store/refs/heads/master/dvalcasa-supabase/assets/2.png
+  - https://raw.githubusercontent.com/dvalcasa/dvalcasas-umbrel-app-store/refs/heads/master/dvalcasa-supabase/assets/3.png
+  - https://raw.githubusercontent.com/dvalcasa/dvalcasas-umbrel-app-store/refs/heads/master/dvalcasa-supabase/assets/4.png
 releaseNotes: ""
 dependencies: []
 path: ""
