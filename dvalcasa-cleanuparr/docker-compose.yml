@@ -1,11 +1,6 @@
 version: "3.7"
 
 services:
-  app_proxy:
-    environment:
-      APP_HOST: dvalcasa-cleanuparr_server_1
-      APP_PORT: 11011
-
   server:
     image: ghcr.io/cleanuparr/cleanuparr:latest
     restart: on-failure
