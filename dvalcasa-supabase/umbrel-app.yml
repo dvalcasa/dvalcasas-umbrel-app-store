@@ -9,12 +9,12 @@ port: 53000
 description: >-
   Supabase is the Postgres development platform. 
   We're building the features of Firebase using enterprise-grade open source tools.
-developer: Cleanuparr
+developer: Supabase
 website: https://supabase.com
-submitter: supabase
+submitter: dvalcasa
 submission: https://github.com/supabase/supabase/pull
 repo: https://github.com/supabase/supabase
-support: https://github.com/supabase/supabase/issues
+support: https://github.com/supabase/supabase/discussions
 gallery:
   - https://raw.githubusercontent.com/dvalcasa/dvalcasas-umbrel-app-store/refs/heads/master/dvalcasa-supabase/assets/1.png
   - https://raw.githubusercontent.com/dvalcasa/dvalcasas-umbrel-app-store/refs/heads/master/dvalcasa-supabase/assets/2.png
