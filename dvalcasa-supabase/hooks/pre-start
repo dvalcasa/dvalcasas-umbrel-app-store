@@ -106,7 +106,7 @@ sed \
     -e "s|^S3_PROTOCOL_ACCESS_KEY_SECRET=.*$|S3_PROTOCOL_ACCESS_KEY_SECRET=${s3_protocol_access_key_secret}|" \
     -e "s|^MINIO_ROOT_PASSWORD=.*$|MINIO_ROOT_PASSWORD=${minio_root_password}|" \
     -e "s|^POSTGRES_PASSWORD=.*$|POSTGRES_PASSWORD=${postgres_password}|" \
-    "${APP_DATA_DIR}/.env"
+    ${APP_DATA_DIR}/.env
 
 echo "Exporting .env..."
 export $(grep -v '^#' "${APP_DATA_DIR}/.env" | xargs)
