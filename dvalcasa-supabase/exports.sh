@@ -1,1 +1,1 @@
-export $(grep -v '^#' .env | xargs)
+export $(grep -v '^#' "${APP_DATA_DIR}/.env" | xargs)
