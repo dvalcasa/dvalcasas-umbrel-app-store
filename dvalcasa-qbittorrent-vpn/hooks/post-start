@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "inside qbittorrent/hooks/post-install"
+echo "inside qbittorrent/hooks/post-start"
 
 # This script does 2 main things:
 # 1. Sets the default password to 'adminadmin' if it hasn't been set yet. This is done so that users can access qBittorrent after installation without needing to access the qBittorrent container logs to retrieve a temporary password which will reset on restart.
