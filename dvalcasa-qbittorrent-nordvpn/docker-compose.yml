@@ -23,7 +23,7 @@ services:
 
   # Exemple de service routé via le VPN
   qbittorrent:
-    image: ghcr.io/hotio/qbittorrent:release-5.3.0@sha256:84a374fce2b6a35687b77cc2e6ffe349d12c183b96a847c6faf7287482527d26
+    image: docker pull linuxserver/qbittorrent:5.3.0
     network_mode: "service:gluetun"
     depends_on:
       gluetun:
