@@ -1,6 +1,12 @@
 version: "3.7"
 
 services:
+  app_proxy:
+      environment:
+        APP_HOST: dvalcasa-qbittorrent-nordvpn_gluetun_1
+        APP_PORT: 8094
+        PROXY_AUTH_ADD: "false"
+
   gluetun:
     image: qmcgaw/gluetun:v3
     cap_add:
@@ -23,7 +29,7 @@ services:
 
   # Exemple de service routé via le VPN
   qbittorrent:
-    image: docker pull linuxserver/qbittorrent:5.3.0
+    image: docker pull linuxserver/qbittorrent:latest
     network_mode: "service:gluetun"
     depends_on:
       gluetun:
