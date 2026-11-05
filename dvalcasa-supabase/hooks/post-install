@@ -70,6 +70,7 @@ s3_protocol_access_key_secret=$(gen_hex 32)
 
 minio_root_password=$(gen_hex 16)
 postgres_password=$(gen_hex 16)
+tenant_id=$(echo "tenant-$(gen_hex 4)")
 
 echo ""
 echo "JWT_SECRET=${jwt_secret}"
@@ -106,6 +107,7 @@ sed \
     -e "s|^S3_PROTOCOL_ACCESS_KEY_SECRET=.*$|S3_PROTOCOL_ACCESS_KEY_SECRET=${s3_protocol_access_key_secret}|" \
     -e "s|^MINIO_ROOT_PASSWORD=.*$|MINIO_ROOT_PASSWORD=${minio_root_password}|" \
     -e "s|^POSTGRES_PASSWORD=.*$|POSTGRES_PASSWORD=${postgres_password}|" \
+    -e "s|^POOLER_TENANT_ID=.*$|POOLER_TENANT_ID=${tenant_id}|" \
     ${APP_DATA_DIR}/.env
 
 echo "Exporting .env..."
