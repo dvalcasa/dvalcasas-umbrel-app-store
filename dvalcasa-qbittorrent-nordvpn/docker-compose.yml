@@ -36,7 +36,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - WEBUI_PORT=8094
+      - WEBUI_PORTS=8094
     volumes:
       - ${APP_DATA_DIR}/data/config:/config
       - ${UMBREL_ROOT}/data/storage/downloads:/downloads
