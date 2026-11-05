@@ -6,6 +6,7 @@ services:
       APP_HOST: dvalcasa-qbittorrent-nordvpn_gluetun_1
       APP_PORT: 8080
       PROXY_AUTH_ADD: "false"
+      PROXY_AUTH_WHITELIST: "/api/*"
 
   gluetun:
     image: qmcgaw/gluetun:v3.41
@@ -34,7 +35,7 @@ services:
 
   # Exemple de service routé via le VPN
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:5.3.0
+    image: ghcr.io/hotio/qbittorrent:release-5.3.0
     network_mode: "service:gluetun"
     depends_on:
       gluetun:
