@@ -5,6 +5,31 @@ echo "inside qbittorrent/hooks/post-start"
 
 APP_DATA_DIR="$(readlink -f "$(dirname "${BASH_SOURCE[0]}")/..")"
 QBITTORRENT_CONF_FILE="${APP_DATA_DIR}/data/config/config/qBittorrent.conf"
+UMBREL_QBITTORRENT_CONFIG_FLAG="${APP_DATA_DIR}/HAS_BEEN_CONFIGURED_BY_UMBREL"
+REVERSE_PROXY_CONFIG_FLAG="${APP_DATA_DIR}/REVERSE_PROXY_CONFIGURED_BY_UMBREL"
+QBITTORRENT_DOWNLOADS_PATH_MIGRATION_FLAG="${APP_DATA_DIR}/DOWNLOADS_PATH_CONFIGURED_BY_UMBREL"
+RUN_EXISTING_INSTALL_MIGRATION=false
+RUN_REVERSE_PROXY_MIGRATION=false
+RUN_INITIAL_CONFIGURATION=true
+
+if [[ -f "${UMBREL_QBITTORRENT_CONFIG_FLAG}" ]]; then
+  RUN_INITIAL_CONFIGURATION=false
+
+  if [[ -f "${QBITTORRENT_DOWNLOADS_PATH_MIGRATION_FLAG}" ]] && [[ -f "${REVERSE_PROXY_CONFIG_FLAG}" ]]; then
+    echo "qBittorrent has already been configured and migrated."
+    exit
+  fi
+
+  if [[ ! -f "${QBITTORRENT_DOWNLOADS_PATH_MIGRATION_FLAG}" ]]; then
+    echo "qBittorrent has already been configured. Running existing install migration."
+    RUN_EXISTING_INSTALL_MIGRATION=true
+  fi
+
+  if [[ ! -f "${REVERSE_PROXY_CONFIG_FLAG}" ]]; then
+    echo "qBittorrent has already been configured. Running reverse proxy migration."
+    RUN_REVERSE_PROXY_MIGRATION=true
+  fi
+fi
 
 # Wait up to 30 seconds for the qBittorrent.conf file to exist
 echo "Waiting up to 30 seconds for qBittorrent.conf file to exist..."
@@ -165,6 +190,11 @@ if grep -q '^General\\StatusbarExternalIPDisplayed=' "${QBITTORRENT_CONF_FILE}";
 else
   sed -i '/^\[Preferences\]/a General\\StatusbarExternalIPDisplayed=true' "${QBITTORRENT_CONF_FILE}"
 fi
+
+# Create the UMBREL_QBITTORRENT_CONFIG_FLAG file to indicate that we've configured qBittorrent
+touch "${UMBREL_QBITTORRENT_CONFIG_FLAG}"
+touch "${QBITTORRENT_DOWNLOADS_PATH_MIGRATION_FLAG}"
+touch "${REVERSE_PROXY_CONFIG_FLAG}"
 
 # start the qBittorrent service
 echo "Starting qBittorrent..."
