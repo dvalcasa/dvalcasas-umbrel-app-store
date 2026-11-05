@@ -48,6 +48,12 @@ ensure_preferences_section() {
 	fi
 }
 
+if "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" stop server; then
+  echo "qBittorrent stopped successfully."
+else
+  echo "Failed to run stop command because we were sent here from the post-start hook. This is expected behavior. Continuing"
+fi
+
 ensure_bittorrent_section
 
 echo "Setting Session/DefaultSavePath=/downloads/complete in qBittorrent.conf"
@@ -159,5 +165,9 @@ if grep -q '^General\\StatusbarExternalIPDisplayed=' "${QBITTORRENT_CONF_FILE}";
 else
   sed -i '/^\[Preferences\]/a General\\StatusbarExternalIPDisplayed=true' "${QBITTORRENT_CONF_FILE}"
 fi
+
+# start the qBittorrent service
+echo "Starting qBittorrent..."
+"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" start server
 
 echo "qbittorrent/hooks/post-install done"
