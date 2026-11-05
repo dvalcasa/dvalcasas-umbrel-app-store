@@ -1,13 +1,6 @@
 version: "3.7"
 
 services:
-  app_proxy:
-    environment:
-      APP_HOST: dvalcasa-qbittorrent-nordvpn_gluetun_1
-      APP_PORT: 8094
-      PROXY_AUTH_ADD: "false"
-      PROXY_AUTH_WHITELIST: "/api/*"
-
   gluetun:
     image: qmcgaw/gluetun:v3.41
     cap_add:
@@ -39,7 +32,7 @@ services:
     network_mode: "service:gluetun"
     depends_on:
       gluetun:
-        condition: service_started
+        condition: service_healthy
     environment:
       - PUID=1000
       - PGID=1000
