@@ -89,6 +89,7 @@ echo "S3_PROTOCOL_ACCESS_KEY_SECRET=${s3_protocol_access_key_secret}"
 echo "MINIO_ROOT_PASSWORD=${minio_root_password}"
 echo ""
 echo "POSTGRES_PASSWORD=${postgres_password}"
+echo "POOLER_TENANT_ID=${tenant_id}"
 echo ""
 
 echo "Updating .env..."
