@@ -6,6 +6,20 @@ echo "inside qbittorrent/hooks/post-install"
 APP_DATA_DIR="$(readlink -f "$(dirname "${BASH_SOURCE[0]}")/..")"
 QBITTORRENT_CONF_FILE="${APP_DATA_DIR}/data/config/config/qBittorrent.conf"
 
+# Wait up to 30 seconds for the qBittorrent.conf file to exist
+echo "Waiting up to 30 seconds for qBittorrent.conf file to exist..."
+for attempt in $(seq 1 300); do
+	if [[ -f "${QBITTORRENT_CONF_FILE}" ]]; then
+		echo "qBittorrent.conf file exists"
+		break
+	fi
+	sleep 0.1
+done
+
+# wait 5 seconds to be extra sure the file is fully written by the qBittorrent service
+echo "Waiting 5 seconds for qBittorrent.conf file to be fully written..."
+sleep 5
+
 if [[ ! -f "${QBITTORRENT_CONF_FILE}" ]]; then
   echo "[ERROR] qBittorrent.conf was never created. Something is likely wrong with the qBittorrent app."
   exit
