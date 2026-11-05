@@ -48,7 +48,7 @@ ensure_preferences_section() {
 	fi
 }
 
-if "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" stop server; then
+if "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" stop qbittorrent; then
   echo "qBittorrent stopped successfully."
 else
   echo "Failed to run stop command because we were sent here from the post-start hook. This is expected behavior. Continuing"
@@ -168,6 +168,6 @@ fi
 
 # start the qBittorrent service
 echo "Starting qBittorrent..."
-"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" start server
+"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" start qbittorrent
 
 echo "qbittorrent/hooks/post-install done"
