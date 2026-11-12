@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SUPABASE_DIR="supabase"
+DOCKER_DIR="${SUPABASE_DIR}/docker"
+
+set -o allexport
+source ../.env
+set +o allexport
+
+docker_login() {
+    echo "${GHCR_TOKEN}" | docker login ghcr.io -u ${GHCR_USER} --password-stdin
+}
+
+# get Supabase (into docker) is not found
+supabase_init() {
+    if [ ! -d "$DOCKER_DIR" ]; then
+        echo "Clone repo"
+        git clone --depth 1 --filter=blob:none --sparse https://github.com/supabase/supabase.git "$SUPABASE_DIR"
+        git -C "$SUPABASE_DIR" sparse-checkout set docker
+    fi
+
+    if [ ! -f "$DOCKER_DIR/.env" ]; then
+        echo "Copy Env"
+        cp "$DOCKER_DIR/.env.example" "$DOCKER_DIR/.env"
+        
+        echo "Generate keys"
+        cd $DOCKER_DIR
+        chmod -R +x utils
+        utils/generate-keys.sh --update-env
+        
+        tenant=$(echo "tenant-$(openssl rand -hex 4)")
+        echo "POOLER_TENANT_ID=${tenant}"
+        sed -i.old -e "s|^POOLER_TENANT_ID=.*$|POOLER_TENANT_ID=${tenant}|" .env
+
+        echo "API_GW_HTTP_PORT=${API_GW_HTTP_PORT}"
+        sed -i.old -e "s|^API_GW_HTTP_PORT=.*$|API_GW_HTTP_PORT=${API_GW_HTTP_PORT}|" .env
+
+        cd -
+    fi
+}
+
+docker_login
+supabase_init

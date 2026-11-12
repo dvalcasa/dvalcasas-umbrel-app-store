@@ -1,0 +1,37 @@
+version: "3.7"
+
+include:
+  - path: ./supabase/docker/docker-compose.yml
+    project_directory: ./supabase/docker
+    env_file: ./supabase/docker/.env
+
+services:
+  app_proxy:
+    depends_on:
+      - server
+    environment:
+      APP_HOST: dvalcasa-pgctf_server_1
+      APP_PORT: 8080
+      PROXY_AUTH_ADD: "false"
+
+  server:
+    container_name: pgctf-server
+    image: ghcr.io/dvalcasa/pgctf:latest
+    ports:
+      - "${PGCTF_PORT:-8080}:8080"
+    environment:
+      LOG_LEVEL: ${LOG_LEVEL:-debug}
+      # Shared connection with Supabase, via Supavisor (Docker service name, never "localhost")
+      DATABASE_HOST: supavisor
+      DATABASE_NAME: ${POSTGRES_DB}
+      DATABASE_USERNAME: ${POSTGRES_DB}.${POOLER_TENANT_ID}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
+      DATABASE_PORT: ${POSTGRES_PORT:-5432}
+      SUPABASE_URL: http://api-gw:${API_GW_HTTP_PORT:-8000}
+      SUPABASE_ANON_KEY: ${ANON_KEY}
+      SUPABASE_SERVICE_ROLE_KEY: ${SERVICE_ROLE_KEY}
+    # Supabase (via API gateway, db service dependency) must be ready before starting pgCtf
+    depends_on: 
+      api-gw:
+        condition: service_healthy
+    restart: unless-stopped
