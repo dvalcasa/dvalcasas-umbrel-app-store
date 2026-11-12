@@ -4,10 +4,6 @@ set -euo pipefail
 SUPABASE_DIR="supabase"
 DOCKER_DIR="${SUPABASE_DIR}/docker"
 
-set -o allexport
-source ../.env
-set +o allexport
-
 docker_login() {
     echo "${GHCR_TOKEN}" | docker login ghcr.io -u ${GHCR_USER} --password-stdin
 }
